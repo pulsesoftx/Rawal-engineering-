@@ -49,7 +49,7 @@ export default function SiteFooter() {
         <div className="mt-12 grid gap-5 border-t border-white/15 pt-7 text-sm text-white/65 md:grid-cols-3">
           <div className="flex items-start gap-3"><MapPin size={18} className="mt-1 shrink-0 text-[var(--lime)]" /><span>Hope Hospital opposite, Gali 3,<br />3rd house, Sinamangal, Kathmandu</span></div>
           <a href="mailto:contact@rawalengineering.com.np" className="flex items-center gap-3 transition hover:text-white"><Mail size={18} className="shrink-0 text-[var(--lime)]" />contact@rawalengineering.com.np</a>
-          <a href="tel:9860208667" className="flex items-center gap-3 transition hover:text-white"><Phone size={18} className="shrink-0 text-[var(--lime)]" />9860208667</a>
+          <a href="tel:+9779716436755" className="flex items-center gap-3 transition hover:text-white"><Phone size={18} className="shrink-0 text-[var(--lime)]" />+977 9716436755</a>
         </div>
 
         <div className="mt-8 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 text-xs text-white/45 md:flex-row">

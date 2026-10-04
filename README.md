@@ -109,4 +109,18 @@ cd backend
 
 ## Deployment Notes
 
-The frontend can be deployed to Vercel or another Next.js host. Set `NEXT_PUBLIC_API_URL` to the public API origin at build time. Deploy Django separately to a Django-compatible host, configure PostgreSQL, set `DJANGO_DEBUG=false`, provide strong `DJANGO_SECRET_KEY` and `JWT_SECRET` values, set `ALLOWED_HOSTS` and `CLIENT_URL` to the production domains, and configure SMTP if email notifications are needed. Use persistent/object storage for resumes; local filesystem uploads and Django's debug media serving are intended for development, not production. Never commit `.env` files, credentials, database files, uploaded resumes, or dependency/build directories.
+The project is configured for a Vercel frontend and a separately hosted Django API on Render.
+
+### Frontend on Vercel
+
+1. Import the GitHub repository into Vercel and set the project root directory to `frontend`. Vercel detects Next.js automatically; no extra Vercel configuration file is required.
+2. Set `NEXT_PUBLIC_API_URL` to the deployed Django API origin in the Vercel project environment variables before building.
+
+### Backend on Render
+
+1. Create a Render Blueprint from the repository root. `render.yaml` defines the Django web service and its build, migration, start, and health-check commands.
+2. Provide a persistent PostgreSQL connection string as `DATABASE_URL`, the deployed API hostname as `ALLOWED_HOSTS`, and the Vercel site origin as `CLIENT_URL`. Render generates `DJANGO_SECRET_KEY` and `JWT_SECRET` for the service.
+3. Set `DJANGO_DEBUG=false`. Configure SMTP variables if application email notifications are needed.
+4. Configure persistent or object storage for resume uploads. The service's local filesystem is ephemeral and must not be used to retain production uploads.
+
+Never commit `.env` files, credentials, database files, uploaded resumes, or dependency/build directories.

@@ -8,6 +8,7 @@ backend/uploads/*
 !backend/uploads/.gitkeep
 backend/.venv/
 backend/db.sqlite3
+backend/staticfiles/
 .DS_Store
 __pycache__/
 *.py[cod]

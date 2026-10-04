@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { CategoryFlow } from "./components/CategoryFlow";
+import MarketingHeader from "./components/MarketingHeader";
 import { OrbitalSection } from "./components/OrbitalSection";
 
 const workflowSteps = [
@@ -26,22 +27,8 @@ const serviceHighlights = [
 
 export default function Home() {
   return <main>
-    <nav aria-label="Primary navigation" className="fixed inset-x-0 top-0 z-30 border-b border-[#435365] bg-[#2f3e4e] text-white">
-      <div className="flex items-center justify-between gap-5 overflow-x-auto px-5 py-2 lg:px-8">
-        <Link href="/" className="focus-ring flex shrink-0 items-center gap-2">
-          <Image src="/logo-transparent.svg" alt="RAWAL Engineering logo" width={48} height={48} priority className="object-contain" />
-          <span className="display text-xs font-bold leading-tight tracking-[.1em] text-[var(--lime)] sm:text-sm">RAWAL ENGINEERING<br /><span className="text-[.68em] font-normal tracking-[.16em]">PVT. LTD.</span></span>
-        </Link>
-        <div className="flex shrink-0 items-center gap-4 text-sm lg:gap-7">
-          <Link href="/about" className="whitespace-nowrap text-white/75 transition hover:text-white">About</Link>
-          <Link href="/services" className="whitespace-nowrap text-white/75 transition hover:text-white">Services</Link>
-          <Link href="/projects" className="whitespace-nowrap text-white/75 transition hover:text-white">Projects</Link>
-          <Link href="/careers" className="whitespace-nowrap text-white/75 transition hover:text-white">Careers</Link>
-          <Link href="/contact" className="whitespace-nowrap text-white/75 transition hover:text-white">Contact</Link>
-        </div>
-      </div>
-    </nav>
-    <div className="pt-[4.5rem]">
+    <MarketingHeader />
+    <div>
       <div className="orbital-background-wrap">
         <OrbitalSection />
       </div>

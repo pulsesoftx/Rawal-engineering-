@@ -49,7 +49,7 @@ export default function ContactPage() {
               <div className="border-t border-[var(--line)] pt-6">
                 <p className="text-sm font-bold text-[var(--ink)]">Choose how you would like to continue</p>
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-                  <a href="https://wa.me/9779860208667?text=Hello%20RAWAL%20Engineering,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" className="btn-dark"><MessageCircle size={17} /> WhatsApp <ArrowUpRight size={17} /></a>
+                  <a href="https://wa.me/9779716436755?text=Hello%20RAWAL%20Engineering,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" className="btn-dark"><MessageCircle size={17} /> WhatsApp <ArrowUpRight size={17} /></a>
                   <a href="mailto:contact@rawalengineering.com.np" className="btn-primary"><Mail size={17} /> Email us <ArrowUpRight size={17} /></a>
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
             <div className="mt-8 space-y-7">
               <div className="flex gap-4"><MapPin className="shrink-0 text-[var(--teal)]" /><div><strong>Hope Hospital opposite, Gali 3</strong><p className="muted mt-1 leading-6">3rd house, Sinamangal, Kathmandu.</p></div></div>
               <div className="flex gap-4"><Mail className="shrink-0 text-[var(--teal)]" /><div><strong>contact@rawalengineering.com.np</strong><p className="muted mt-1">General enquiries and project conversations.</p></div></div>
-              <div className="flex gap-4"><Phone className="shrink-0 text-[var(--teal)]" /><div><strong>9860208667</strong><p className="muted mt-1">Monday to Friday, 9:00 to 17:00.</p></div></div>
+              <div className="flex gap-4"><Phone className="shrink-0 text-[var(--teal)]" /><div><strong>+977 9716436755</strong><p className="muted mt-1">Monday to Friday, 9:00 to 17:00.</p></div></div>
             </div>
             <Link href="/careers" className="mt-10 inline-flex items-center gap-2 font-bold text-[var(--teal)]">Join the team <ArrowUpRight size={16} /></Link>
           </aside>

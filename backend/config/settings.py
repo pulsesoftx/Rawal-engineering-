@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,6 +10,10 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "development-secret-key-change-me-32")
 DEBUG = os.getenv("DJANGO_DEBUG", "true").lower() == "true"
 ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if host.strip()]
+if not DEBUG and SECRET_KEY == "development-secret-key-change-me-32":
+    raise ImproperlyConfigured("Set DJANGO_SECRET_KEY before deploying with DJANGO_DEBUG=false.")
+if not DEBUG and not os.getenv("DATABASE_URL"):
+    raise ImproperlyConfigured("Set DATABASE_URL to a persistent PostgreSQL database before deployment.")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,6 +29,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -65,7 +71,12 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Asia/Kathmandu"
 USE_I18N = True
 USE_TZ = True
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+}
 MEDIA_URL = "/uploads/"
 MEDIA_ROOT = Path(os.getenv("UPLOAD_DIR", BASE_DIR / "uploads"))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
